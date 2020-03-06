@@ -14,7 +14,7 @@ const app = express();
 //   useNewUrlParser: true,
 // });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +23,7 @@ app.use('/api', mutationsRouter);
 
 app.get('/', (req, res) => {
   res.json({
-    books: `http${req.secure ? 's' : ''}://${req.headers.host}/api/books`,
+    books: `http${req.secure ? 's' : ''}://${req.headers.host}/api/stats`,
   });
 });
 
