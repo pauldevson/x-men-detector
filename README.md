@@ -25,6 +25,7 @@ _You can use the file `xMenDetector.postman_collection.json` (in the root folder
 1. Clone this repo:
 ```
 $ git clone https://github.com/paulsancer/x-men-detector
+$ cd x-men-detector
 ```
 
 2. Install dependencies:
