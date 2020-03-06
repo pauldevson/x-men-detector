@@ -6,18 +6,22 @@
   "scripts": {
     "lint": "eslint app.js",
     "test": "mocha --require @babel/register src/tests/**/*Tests.js",
-    "start": "npm run prod",
+    "start": "node ./dist/app.js",
     "server": "babel-node ./src/app.js",
     "server:prod": "node ./dist/app.js",
     "dev": "nodemon --exec babel-node ./src/app.js",
     "clean": "rimraf dist",
     "build": "babel ./src --out-dir ./dist",
-    "prod": "npm-run-all clean build server:prod",
+    "prod": "npm-run-all build server:prod",
     "watch": "nodemon"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "body-parser": "^1.18.3",
     "dotenv": "^8.0.0",
@@ -28,10 +32,6 @@
     "rimraf": "^2.6.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -49,7 +49,7 @@
     "delay": "2500",
     "env": {
       "NODE_ENV": "development",
-      "PORT": 4000
+      "PORT": 8080
     }
   }
 }
