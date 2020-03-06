@@ -17,7 +17,7 @@ const addMutation = (req, res) => {
   }
 
   // todo: save the mutation
-  return res.status(204).send();
+  return res.status(200).send();
 };
 
 export default {
