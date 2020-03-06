@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "d4501978-93df-43a9-ad7f-cdb89a3c8350",
+		"name": "X-Men Detector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mutations OK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dna\": [\n        \"ATGCGA\",\n        \"CAGTGC\",\n        \"TTATGT\",\n        \"AGAAGG\",\n        \"CCCCTA\",\n        \"TCACTG\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://xmendetector.appspot.com/api/mutations",
+					"protocol": "https",
+					"host": [
+						"xmendetector",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"mutations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mutations 403",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dna\": [\n        \"ATGCGA\",\n        \"CAGTGC\",\n        \"TTATGT\",\n        \"AGAATG\",\n        \"CACCTA\",\n        \"TCACTG\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://xmendetector.appspot.com/api/mutations",
+					"protocol": "https",
+					"host": [
+						"xmendetector",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"mutations"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
