@@ -1,6 +1,7 @@
-import { isMutantDNA } from '../services/dnaMutationsDetector';
+import { isMutantDNA, hashDNA } from '../services/dnaMutationsDetector';
+import DNA from '../models/dnaModel';
 
-const addMutation = (req, res) => {
+const addMutation = async (req, res) => {
   const { dna } = req.body;
 
   if (!dna.length) return res.status(400).content('Invalid DNA.');
@@ -11,15 +12,31 @@ const addMutation = (req, res) => {
     return res.status(400).content('Invalid DNA.');
   }
 
-  if (!isMutantDNA(dna)) {
-    // doesn't make any sense but 403 is the requirement 😅
-    return res.status(403).send();
+  const hash = hashDNA(dna);
+  const isMutant = isMutantDNA(dna);
+
+  let savedDNA = await DNA.findOne({ hash });
+
+  try {
+    if (!savedDNA) {
+      // save the dna
+      savedDNA = await DNA.create({
+        hash,
+        dna,
+        isMutant,
+        analyzedCount: 1,
+      });
+    } else {
+      savedDNA.analyzedCount += 1;
+
+      await savedDNA.save();
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json(err);
   }
 
-  // todo: save the mutation
-  return res.status(200).send();
+  return res.status(isMutant ? 200 : 403).json(savedDNA);
 };
 
-export default {
-  addMutation,
-};
+export default { addMutation };

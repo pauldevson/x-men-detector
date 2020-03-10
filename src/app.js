@@ -1,5 +1,5 @@
 import express from 'express';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import mutationsRouter from './routes/mutationsRouter';
@@ -8,11 +8,12 @@ dotenv.config();
 
 const app = express();
 
-// const { DBConnectionString } = process.env;
+const { XMenDBConnectionString } = process.env;
 
-// mongoose.connect(DBConnectionString, {
-//   useNewUrlParser: true,
-// });
+mongoose.connect(XMenDBConnectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const port = process.env.PORT || 8080;
 

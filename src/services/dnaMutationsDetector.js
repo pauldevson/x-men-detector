@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 const MUTATIONS = ['AAAA', 'TTTT', 'CCCC', 'GGGG'];
 const MUTATIONS_REGEX = new RegExp(MUTATIONS.join('|'));
 const Directions = { BottomToTop: 1, TopToBottom: 2 };
@@ -60,5 +62,13 @@ export const isMutantDNA = dna => {
 
   return findingsCount > 1;
 };
+const hashString = str =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  crypto
+    .createHash('sha256')
+    .update(str)
+    .digest('hex');
 
-export default { isMutantDNA };
+export const hashDNA = dna => hashString(dna.join('.'));
+
+export default { isMutantDNA, hashDNA };
