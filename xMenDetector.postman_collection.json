@@ -27,8 +27,8 @@
 					}
 				},
 				"url": {
-					"raw": "https://xmendetector.appspot.com/api/mutations",
-					"protocol": "https",
+					"raw": "http://xmendetector.appspot.com/api/mutations",
+					"protocol": "http",
 					"host": [
 						"xmendetector",
 						"appspot",
@@ -56,7 +56,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"dna\": [\n        \"ATGCGA\",\n        \"CAGTGC\",\n        \"TTATGT\",\n        \"AGAATG\",\n        \"CACCTA\",\n        \"TCACTG\"\n    ]\n}",
+					"raw": "{\n    \"dna\": [\n        \"ATGCGA\",\n        \"CAGTGC\",\n        \"TTATGT\",\n        \"AGAATG\",\n        \"CACCTA\",\n        \"TCACTT\"\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,8 +64,8 @@
 					}
 				},
 				"url": {
-					"raw": "https://xmendetector.appspot.com/api/mutations",
-					"protocol": "https",
+					"raw": "http://xmendetector.appspot.com/api/mutations",
+					"protocol": "http",
 					"host": [
 						"xmendetector",
 						"appspot",
@@ -74,6 +74,34 @@
 					"path": [
 						"api",
 						"mutations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://xmendetector.appspot.com/api/stats",
+					"protocol": "http",
+					"host": [
+						"xmendetector",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"stats"
 					]
 				}
 			},
