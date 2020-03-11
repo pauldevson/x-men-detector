@@ -8,7 +8,7 @@ export const getStats = async (req, res) => {
     return res.status(200).json({
       count_mutations: xmenCount,
       count_no_mutation: humanCount,
-      ratio: xmenCount / humanCount,
+      ratio: !humanCount ? xmenCount : xmenCount / humanCount,
     });
   } catch (error) {
     return res.status(500).json(error);
