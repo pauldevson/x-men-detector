@@ -13,11 +13,10 @@ const addMutation = async (req, res) => {
   }
 
   const hash = hashDNA(dna);
-  const isMutant = isMutantDNA(dna);
-
   let savedDNA = await DNA.findOne({ hash });
-
+  console.log(savedDNA);
   try {
+    const isMutant = isMutantDNA(dna);
     if (!savedDNA) {
       // save the dna
       savedDNA = await DNA.create({
@@ -36,7 +35,7 @@ const addMutation = async (req, res) => {
     return res.status(500).json(err);
   }
 
-  return res.status(isMutant ? 200 : 403).json(savedDNA);
+  return res.status(savedDNA.isMutant ? 200 : 403).json(savedDNA);
 };
 
 export default { addMutation };
